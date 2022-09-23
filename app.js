@@ -12,6 +12,23 @@ const app = express();
 
 const posts = [];
 
+
+
+
+
+// Load the full build.
+
+
+
+
+
+
+
+
+
+
+
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -54,6 +71,23 @@ app.post("/compose", function(req, res) {
   
 })
 
+var _ = require('lodash');
+
+app.get('/posts/:postName', function(req, res) {
+  const requestedTitle = _.lowerCase(req.params.postName)
+  
+
+  posts.forEach(function(post){
+    const storedTitle = _.lowerCase(post.title)
+   
+    if (storedTitle === requestedTitle) {
+      console.log("Match found!");
+    } else {
+      console.log("Not a Match");
+    }
+  })
+  
+})
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
