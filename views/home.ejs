@@ -6,8 +6,12 @@
      <% console.log(posts); %> 
 
     <% posts.forEach(function(post){ %>
+    <%  const reduceContent =  post.content.substring(0,100)       %>
       <h1> <%=post.title%>   </h1> 
-      <p> <%=post.content%>   </p> 
+      <p> <%=reduceContent + "..."%> 
+      
+       <a href="/posts/<%= post.title%>">Read More</a>   
+      </p>  
     <% }) %>      
 
 
